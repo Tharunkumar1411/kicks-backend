@@ -7,8 +7,8 @@ const router = require("./routes/index")
 
 app.listen(process.env.PORT, () => console.log(`server start at ${process.env.PORT}`));
 
-app.get("/", router)
+connectDB();
+
+app.get("*", router)
 
 app.use(express.json())
-
-connectDB();

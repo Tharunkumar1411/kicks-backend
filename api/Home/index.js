@@ -1,9 +1,8 @@
-var mongoose = require('mongoose');
-const HomeSchema = require("../../DB/Schema/homeSchema");
+const Home = require('../../DB/Schema/homeSchema');
 
 exports.getHomePresetDetails = async(req, res) => {
     try {
-        const homeData = await HomeSchema.find();
+        const homeData = await Home.find();
         res.json(homeData);
     } catch (error) {
         console.log("error", error)
