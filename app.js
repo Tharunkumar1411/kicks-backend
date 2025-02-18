@@ -10,10 +10,8 @@ app.listen(process.env.PORT, () => console.log(`server start at ${process.env.PO
 
 app.set("view engine", "ejs");
 
-// Set the directory where EJS files are stored
-app.set("views", path.join(__dirname, "views")); // Ensure your EJS files are in a "views" folder
+app.set("views", path.join(__dirname, "views"));
 
-// Serve static files (CSS, JS, Images)
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
