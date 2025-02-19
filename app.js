@@ -4,6 +4,7 @@ const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
 const connectDB = require("./DB/index");
+var bodyParser = require('body-parser');
 const router = require("./routes/index")
 const cors = require("cors")
 
