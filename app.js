@@ -16,12 +16,7 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(
-    cors({
-        credentials: true,
-        origin: "https://kick-app.vercel.app",
-    })
-);
+app.use(cors({ credentials: true, origin: "*" }))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
