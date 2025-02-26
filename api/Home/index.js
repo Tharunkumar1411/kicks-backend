@@ -18,3 +18,12 @@ exports.getProductDetails = async(req, res) => {
         console.log("error", error)
     }
 }
+
+exports.getProductList = async(req, res) => {
+    try {
+        const productList = await Product.find({});
+        res.json(productList);
+    } catch (error) {
+        console.log("error", error)
+    }
+}
