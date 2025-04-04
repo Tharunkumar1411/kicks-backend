@@ -9,13 +9,41 @@ const Home = mongoose.model("Home", HomeSchema, 'home');
 const Product = mongoose.model("Product", ProductSchema, 'product');
 
 const workflowSchema = new mongoose.Schema({
-    name: String,
-    timestamp: String,
-    nodes: Array,
-    edges: Array,
-    apiConfig: Object,
-}, {
-timestamps: true,
+    flowId: {
+      type: String,
+      required: true,
+      unique: true
+    },
+    nodes: {
+      type: Array,
+      default: []
+    },
+    edges: {
+      type: Array,
+      default: []
+    },
+    flowName: {
+      type: String,
+      required: true
+    },
+    editedOn: {
+      type: String,
+      required: false
+    },
+    name: {
+      type: String,
+      required: false
+    },
+    description: {
+      type: String,
+      default: "Some description here regarding the flow.."
+    },
+    apiConfig: {
+      type: mongoose.Schema.Types.Mixed,
+      default: null
+    }
+  }, {
+    timestamps: true
 });
   
 const WorkFlow = mongoose.model('WorkFlow', workflowSchema);
