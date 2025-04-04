@@ -8,4 +8,16 @@ const Home = mongoose.model("Home", HomeSchema, 'home');
 
 const Product = mongoose.model("Product", ProductSchema, 'product');
 
-module.exports = { Home, Product }
+const workflowSchema = new mongoose.Schema({
+    name: String,
+    timestamp: String,
+    nodes: Array,
+    edges: Array,
+    apiConfig: Object,
+}, {
+timestamps: true,
+});
+  
+const WorkFlow = mongoose.model('WorkFlow', workflowSchema);
+
+module.exports = { Home, Product, WorkFlow }
