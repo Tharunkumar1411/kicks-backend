@@ -1,6 +1,7 @@
 const express = require("express");
 var router = express.Router();
 const HomeApis = require("../api/Home/index")
+const WorkflowApis = require("../api/Workflow/index");
 
 router.get("/getHomeDetails", HomeApis.getHomePresetDetails);
 router.get("/getProductDetails", HomeApis.getProductDetails);
@@ -13,7 +14,7 @@ router.get("/getFilterProperties", HomeApis.getFilterProperties);
 
 
 //workflow routes
-router.post("/setWorkflowDetail", HomeApis.setWorkflowDetail);
-router.get("/getAllWorkflows", HomeApis.getAllWorkflows);
+router.post("/setWorkflowDetail", WorkflowApis.setWorkflowDetail);
+router.get("/getAllWorkflows", WorkflowApis.getAllWorkflows);
 
 module.exports = router;
