@@ -15,7 +15,7 @@ app.set("views", path.join(__dirname, "views"));
 
 // ✅ Correct CORS setup — use only once, before routes
 app.use(cors({
-  origin: "http://localhost:3000", // or your frontend domain
+  origin: "*", // or your frontend domain
   credentials: true,
 }));
 
