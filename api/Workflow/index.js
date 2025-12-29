@@ -1,4 +1,4 @@
-const { WorkFlow } = require('../../DB/Schema/homeSchema');
+const { WorkFlow } = require('../../DB/Models/productModels');
 
 exports.setWorkflowDetail = async (req, res) => {
   try {

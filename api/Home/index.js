@@ -1,4 +1,4 @@
-const {Home, Product} = require('../../DB/Schema/homeSchema');
+const {Home, Product} = require('../../DB/Models/productModels');
 
 exports.getHomePresetDetails = async(req, res) => {
     try {

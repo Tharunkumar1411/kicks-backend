@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
+const { UserSchema } = require("../schema/userShcema");
+
 
 const HomeSchema = new mongoose.Schema({}, { strict: false });
 
 const ProductSchema = new mongoose.Schema({}, { strict: false });
+
+const User = mongoose.model("User", UserSchema, 'user');
 
 const Home = mongoose.model("Home", HomeSchema, 'home');
 
@@ -48,4 +52,4 @@ const workflowSchema = new mongoose.Schema({
   
 const WorkFlow = mongoose.model('WorkFlow', workflowSchema);
 
-module.exports = { Home, Product, WorkFlow }
+module.exports = { User, Home, Product, WorkFlow }
