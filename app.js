@@ -1,39 +1,50 @@
 const express = require("express");
 const path = require("path");
-const app = express();
 const dotenv = require("dotenv");
-const connectDB = require("./DB/index");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
+const connectDB = require("./DB/index");
 const router = require("./routes/index");
 
 dotenv.config();
-connectDB();
 
-app.set("view engine", "ejs");
-app.set("views", path.join(__dirname, "views"));
+const app = express();
 
-// ✅ Correct CORS setup — use only once, before routes
-app.use(cors({
-  origin: "*", // or your frontend domain
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:8080",
+      "http://localhost:8081",
+      "https://kicks-app-two.vercel.app"
+    ],
+    credentials: true
+  })
+);
 
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.json());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.json());
-
-// ✅ Use proper router
-app.use("/", router);
-// // Home route
-app.get("/health", (req, res) => {
-  res.json({ status: "ok" });
+app.use(async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("DB connection failed", err);
+    return res.status(500).json({ message: "Database connection error" });
+  }
 });
 
-// Start server
-// app.listen(process.env.PORT, () => {
-//   console.log(`Server started at ${process.env.PORT}`);
+app.use("/api", router);
+
+app.get("/", (req, res) => {
+  res.json({
+    service: "kicks-backend",
+    status: "running"
+  });
+});
+// app.listen(4000, () => {
+//   console.log(`Local server running on http://localhost:${4000}`);
 // });
-export default app;
+module.exports = app;
