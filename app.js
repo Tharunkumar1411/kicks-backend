@@ -28,12 +28,12 @@ app.use(express.json());
 // ✅ Use proper router
 app.use("/", router);
 // // Home route
-// app.get("/", (req, res) => {
-//   res.render("staticHome", {
-//     title: "Kicks-backend",
-//     message: "Welcome to kicks backend services"
-//   });
-// });
+app.get("/", (req, res) => {
+  res.render("staticHome", {
+    title: "Kicks-backend",
+    message: "Welcome to kicks backend services"
+  });
+});
 
 // Start server
 app.listen(process.env.PORT, () => {
